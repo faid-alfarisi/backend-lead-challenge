@@ -2,7 +2,7 @@
 
 This is the starter codebase for the Backend Lead take-home. The task itself is described in [`../readme.md`](../readme.md).
 
-For a complete walkthrough of endpoints, parameters, sample cURL commands, and seeded demo accounts, see [**`../HOW_TO_USE.md`**](../HOW_TO_USE.md).
+For a complete walkthrough of endpoints, parameters, sample cURL commands, and seeded demo accounts, see [**`../HOW-TO-USE.md`**](../HOW-TO-USE.md).
 
 ## Stack
 
