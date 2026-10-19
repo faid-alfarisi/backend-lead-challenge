@@ -27,3 +27,8 @@ export class UnprocessableEntityError extends AppError {
   }
 }
 
+export class ConflictError extends AppError {
+  constructor(message: string, payload?: Record<string, unknown>) {
+    super(409, message, payload);
+  }
+}
