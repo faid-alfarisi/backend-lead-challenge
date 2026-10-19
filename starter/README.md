@@ -2,6 +2,8 @@
 
 This is the starter codebase for the Backend Lead take-home. The task itself is described in [`../readme.md`](../readme.md).
 
+For a complete walkthrough of endpoints, parameters, sample cURL commands, and seeded demo accounts, see [**`../HOW_TO_USE.md`**](../HOW_TO_USE.md).
+
 ## Stack
 
 TypeScript, Express, Sequelize, PostgreSQL, Jest. Money is `DECIMAL(36,18)` in Postgres, strings in JS/JSON, and all arithmetic goes through `bignumber.js` (see `src/lib/money.ts`).
@@ -15,7 +17,8 @@ cp .env.example .env
 npm install
 npm run db:up        # starts Postgres on localhost:5439 (dev + test databases)
 npm run db:migrate   # migrates the dev database
-npm test             # migrates the test database and runs the test suite
+npm run db:seed      # (optional) seeds demo members, wallets, and transactions
+npm test             # migrates the test database and runs the 25-test suite
 npm run dev          # starts the API on :3000
 ```
 
@@ -28,15 +31,18 @@ src/
 ├── app.ts               # express app factory
 ├── index.ts             # entrypoint
 ├── config.ts
-├── lib/money.ts         # BigNumber helpers - use these for all money math
+├── lib/
+│   ├── money.ts         # BigNumber helpers - use these for all money math
+│   └── errors.ts        # domain and HTTP error classes
 ├── db/
 │   ├── sequelize.ts
 │   ├── cli-config.js    # sequelize-cli config (used by npm run db:migrate)
-│   ├── migrations/      # add your migrations here
-│   └── models/
-├── routes/
-└── services/
-test/                    # add your tests here
+│   ├── migrations/      # database migrations
+│   ├── models/          # Sequelize models (Member, Wallet, FundingTransaction, WalletTx)
+│   └── seeders/         # demo sample data seeder
+├── routes/              # express routes (members, deposits, psp, wallets, withdrawals)
+└── services/            # core domain services with transactional row-level locks
+test/                    # integration and concurrency test suites
 ```
 
 ## Conventions to keep
